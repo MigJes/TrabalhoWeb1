@@ -24,17 +24,19 @@
                         <tr>
                             <th>ID</th>
                             <th>Modelo</th>
-                            <th>Ação</th>
-                            <th>Documento</th>
-                            
+                            <th>Fabricante</th>
+              				<th>Documento</th>
+              				<th>Chave</th>
+                             <th>Ação</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr th:each="carro : ${carros}">
                             <td th:text="${carro.id}"></td>
                             <td th:text="${carro.modelo}"></td>
-                           <td th:text="${carro.documento.numero}"></td>
-                            
+                           	<td th:text="${carro.fabricante.nome}"></td>
+                           	<td th:text="${carro.documento.numero}"></td>
+                           	<td th:text="${carro.chave.codigo}"></td>
                            
                             <td>
                                 <div class="btn-group pull-right">
@@ -48,7 +50,7 @@
                 </div>
             </div>
             <div align="left">
-                <a  href="/carros/cadastrar" class="btn btn-success">Cadastrar</a>
+               <a class="btn btn-sm btn-success" th:href = "@{/carros/cadastrar}">CADASTRAR NOVO CARRO</a>
             </div>
         </div>
     </div>

@@ -9,9 +9,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.gerenciadordecarros.domain.Carro;
+import com.example.gerenciadordecarros.service.AcessorioService;
 import com.example.gerenciadordecarros.service.CarroService;
+import com.example.gerenciadordecarros.service.ChaveService;
+import com.example.gerenciadordecarros.service.DocumentoService;
+import com.example.gerenciadordecarros.service.FabricanteService;
 
 import javassist.tools.rmi.ObjectNotFoundException;
+
+//import javassist.tools.rmi.ObjectNotFoundException;
 
 @Controller
 @RequestMapping("carros")
@@ -19,8 +25,18 @@ public class CarroController {
 
     @Autowired
     private CarroService service;
+    
+    @Autowired
+    private FabricanteService fabricanteService;
 
+    @Autowired
+    private DocumentoService documentoService;
 
+    @Autowired 
+    private ChaveService chaveService;
+    
+    @Autowired 
+    private AcessorioService acessorioService;
 
     @GetMapping("/listar")
     public ModelAndView listar() {
@@ -33,7 +49,10 @@ public class CarroController {
     public ModelAndView cadastrar() {
         ModelAndView mv = new ModelAndView("carros/cadastrar");
         mv.addObject("carro", new Carro());
-       
+        mv.addObject("fabricantes", fabricanteService.findAll());
+        mv.addObject("documentos", documentoService.findAll());
+        mv.addObject("chaves", chaveService.findAll());
+        mv.addObject("acessorios", acessorioService.findAll());
         return mv;
     }
 
@@ -53,7 +72,10 @@ public class CarroController {
     public ModelAndView editar(@PathVariable("id") int id) throws ObjectNotFoundException {
         ModelAndView mv = new ModelAndView("carros/editar");
         mv.addObject("carro", service.findOne(id));
-      
+        mv.addObject("fabricantes", fabricanteService.findAll());
+        mv.addObject("documentos", documentoService.findAll());
+        mv.addObject("chaves", chaveService.findAll());
+        mv.addObject("acessorios", acessorioService.findAll());
         return mv;
     }
 

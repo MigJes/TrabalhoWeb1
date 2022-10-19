@@ -36,8 +36,12 @@ public class CarroService {
     }
 
     public Carro update(Carro carro) throws ObjectNotFoundException {
-        Carro carroExistente = findOne(carro.getId());
+    	Carro carroExistente = findOne(carro.getId());
         carroExistente.setModelo(carro.getModelo());
+        carroExistente.setFabricante(carro.getFabricante());
+        carroExistente.setDocumento(carro.getDocumento());
+        carroExistente.setChave(carro.getChave());
+        carroExistente.setAcessorios(carro.getAcessorios());
         return save(carroExistente);
     }
 

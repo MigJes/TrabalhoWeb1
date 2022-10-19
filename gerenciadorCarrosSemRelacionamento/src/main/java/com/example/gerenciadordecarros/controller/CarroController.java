@@ -25,16 +25,12 @@ public class CarroController {
 
     @Autowired
     private CarroService service;
-    
     @Autowired
     private FabricanteService fabricanteService;
-
     @Autowired
     private DocumentoService documentoService;
-
     @Autowired 
     private ChaveService chaveService;
-    
     @Autowired 
     private AcessorioService acessorioService;
 
